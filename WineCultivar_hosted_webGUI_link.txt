@@ -1,0 +1,6 @@
+Name: Chisom Okoye
+Matric Number: 22CE032242
+Machine Learning Algorithm Used: K-Nearest Neighbors (KNN)
+Model persistence method used: Pickle
+Live URL of hosted application: (fill this after deployment)
+GitHub repository link: https://github.com/chisomokoyegit/WineCultivar_Project_Chisom_Okoye_22CE032242
