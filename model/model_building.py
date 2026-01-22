@@ -34,6 +34,42 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 # 5. Feature scaling (MANDATORY)
+import numpy as np
+import pickle
+from sklearn.datasets import load_wine
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score, classification_report
+
+# 1. Load Wine dataset
+wine = load_wine()
+X = wine.data
+y = wine.target
+feature_names = wine.feature_names
+
+# 2. Select EXACTLY six approved features
+selected_features = [
+    'alcohol',
+    'malic_acid',
+    'ash',
+    'alcalinity_of_ash',
+    'total_phenols',
+    'proline'
+]
+
+feature_indices = [feature_names.index(f) for f in selected_features]
+X = X[:, feature_indices]
+
+# 3. Handle missing values (dataset has none, but included for compliance)
+X = np.nan_to_num(X)
+
+# 4. Train-test split
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42, stratify=y
+)
+
+# 5. Feature scaling (MANDATORY)
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
